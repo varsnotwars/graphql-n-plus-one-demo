@@ -15,6 +15,7 @@ const typeDefs = gql`
 
   type Query {
     books: [Book!]!
+    authors: [Author!]!
   }
 `;
 

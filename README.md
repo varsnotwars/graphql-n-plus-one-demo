@@ -30,7 +30,7 @@ Change `shouldUseDataLoader` in the config.js file to true or false, to use or n
 
 ## Steps to observe N+1 problem
 
-1. Send the following query from the graphql playground (http:localhost:4000)
+1. Send the following query from the graphql playground (http://localhost:4000/)
 
 ```
 query	 {
@@ -59,4 +59,4 @@ query	 {
 
   to
 
-  `DEBUG=knex:query npx nodemon src/index`
+  `"DEBUG=knex:query npx nodemon src/index"`

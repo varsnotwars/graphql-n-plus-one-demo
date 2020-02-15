@@ -2,10 +2,9 @@ const DataLoader = require("dataloader");
 
 module.exports = knex => ({
   authorLoader: new DataLoader(async authorIds => {
-    const result = await knex("authors").whereIn("id", authorIds);
+    const authors = await knex("authors").whereIn("id", authorIds);
 
-    // need key/value for map below
-    const authorsMap = result.reduce(
+    const authorsMap = authors.reduce(
       (map, author) => ({ ...map, [author.id]: author }),
       {}
     );

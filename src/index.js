@@ -11,13 +11,14 @@ const knexfile = require("../knexfile");
 const knex = require("knex")(knexfile);
 
 const { authorLoader } = require("./loaders/authorLoader")(knex);
+const { bookLoader } = require("./loaders/bookLoader")(knex);
 
 const server = new ApolloServer({
   typeDefs,
   resolvers: shouldUseDataLoader ? resolversDataLoader : resolvers,
   context: () => ({
     knex,
-    ...(shouldUseDataLoader ? { authorLoader } : null)
+    ...(shouldUseDataLoader ? { authorLoader, bookLoader } : null)
   })
 });
 

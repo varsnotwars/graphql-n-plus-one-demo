@@ -11,13 +11,22 @@ const resolvers = {
     }
   },
   Author: {
-    books: () => []
+    books: async ({ id }, args, { knex }) => {
+      const books = await knex("books").where({ authorId: id });
+
+      return books;
+    }
   },
   Query: {
     books: async (parent, args, { knex }) => {
       const books = await knex("books").select();
 
       return books;
+    },
+    authors: async (parent, args, { knex }) => {
+      const authors = await knex("authors").select();
+
+      return authors;
     }
   }
 };
