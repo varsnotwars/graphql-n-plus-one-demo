@@ -47,7 +47,7 @@ query	 {
 
 2. While not using the dataloader, you will see 1 sql query executed to select all books, and N (25 in this example) sql queries executed to get all the authors.
 
-3) Set `shouldUseDataLoader` in the config.js file to true and save the file, and resend the query in step 1. You wil see 1 sql query to select all books, and 1 sql query executed.
+3) Set `shouldUseDataLoader` in the config.js file to true and save the file, and resend the query in step 1. You will see 1 sql query executed to select all books, and 1 sql query executed to select all authors 🥳.
 
 ##### Note
 
