@@ -1,3 +1,3 @@
 module.exports = {
-  shouldUseDataLoader: true
+  shouldUseDataLoader: false
 };
