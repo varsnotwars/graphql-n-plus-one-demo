@@ -28,7 +28,7 @@ TODO
 
 Change `shouldUseDataLoader` in the config.js file to true or false, to use or not use the dataloader, respectively. nodemon will reload the server.
 
-### Steps to observe N+1 problem
+## Steps to observe N+1 problem
 
 1. Send the following query from the graphql playground (http:localhost:4000)
 
