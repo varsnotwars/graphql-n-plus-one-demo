@@ -1,6 +1,6 @@
 const resolversDataLoader = {
   Book: {
-    author: async ({ authorId }, args, { knex, authorLoader }) => {
+    author: async ({ authorId }, args, { authorLoader }) => {
       const author = await authorLoader.load(authorId);
       return author;
     }

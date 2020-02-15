@@ -1,34 +1,30 @@
 const { ApolloServer } = require("apollo-server");
 
-const DataLoader = require("dataloader");
+const { typeDefs } = require("./schema");
 
 const { resolvers } = require("./resolvers");
 const { resolversDataLoader } = require("./resolversDataLoader");
 
-const { typeDefs } = require("./schema");
+const { shouldUseDataLoader } = require("../config");
 
 const knexfile = require("../knexfile");
 const knex = require("knex")(knexfile);
 
+const { authorLoader } = require("./loaders/authorLoader")(knex);
+
 const server = new ApolloServer({
   typeDefs,
-  resolvers: resolversDataLoader,
+  resolvers: shouldUseDataLoader ? resolversDataLoader : resolvers,
   context: () => ({
     knex,
-    authorLoader: new DataLoader(async keys => {
-      const result = await knex("authors").whereIn("id", keys);
-
-      // need key/value for map below
-      const authorsMap = result.reduce(
-        (map, author) => ({ ...map, [author.id]: author }),
-        {}
-      );
-
-      return keys.map(
-        key => authorsMap[key] || new Error(`No result for ${key}`)
-      );
-    })
+    ...(shouldUseDataLoader ? { authorLoader } : null)
   })
 });
 
-server.listen().then(({ url }) => console.log(`🚀  Server ready at ${url}`));
+server.listen().then(({ url }) => {
+  console.log(`Server ready at ${url}`);
+
+  shouldUseDataLoader
+    ? console.log("\x1b[36m%s\x1b[0m", "[INFO]: using dataloader")
+    : console.log("\x1b[31m%s\x1b[0m", "[INFO]: not using dataloader");
+});
