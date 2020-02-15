@@ -26,7 +26,7 @@ TODO
 
 ### Toggle usage of dataloader
 
-Change `shouldUseDataLoader` in the config.js file to true or false, to use or not use the dataloader, respectively. nodemon will reload the server.
+Change `shouldUseDataLoader` in the config.js file to true or false, to use or not use the dataloader, respectively. nodemon will reload the server, and you will see a message in the console saying if the dataloader is being used.
 
 ## Steps to observe N+1 problem
 
