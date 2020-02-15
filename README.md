@@ -47,7 +47,24 @@ query	 {
 
 2. While not using the dataloader, you will see 1 sql query executed to select all books, and N (25 in this example) sql queries executed to get all the authors.
 
-3) Set `shouldUseDataLoader` in the config.js file to true and save the file, and resend the query in step 1. You will see 1 sql query executed to select all books, and 1 sql query executed to select all authors 🥳.
+3. Set `shouldUseDataLoader` in the config.js file to true and save the file, and resend the query in step 1. You will see 1 sql query executed to select all books, and 1 sql query executed to select all authors 🥳.
+
+4. To see the an even more drastic example, send the following query with `shouldUseDataLoader` set to false:
+
+```
+query {
+  authors {
+    id
+    name
+    books {
+      id
+      title
+    }
+  }
+}
+```
+
+5. Each author may have up to 5 books. Not a great deal of data, by any means, but in a scenario where every author had 5 books, 1 sql query would be executed to get all authors, and 125 sql queries would be executed to get all books ☠️.
 
 ##### Note
 
