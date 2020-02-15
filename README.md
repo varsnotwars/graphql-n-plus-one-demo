@@ -68,6 +68,8 @@ query {
 
 ##### Note
 
+- built using node v12.13.1
+
 - npx is used to run knex and nodemon so no global installation is required. (see: package.json)
 
 - npm start script is configured for windows, to run on osx change the following:
