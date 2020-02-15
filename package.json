@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon src/index",
+    "start": "set DEBUG=knex:query && npx nodemon src/index",
     "db:update": "npx knex migrate:latest",
     "db:seed": "npx knex seed:run"
   },
