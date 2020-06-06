@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/varsnotwars/graphql-n-plus-one-demo#readme",
   "dependencies": {
-    "apollo-server": "^2.10.0",
+    "apollo-server": "^2.14.2",
     "dataloader": "^2.0.0",
     "faker": "^4.1.0",
     "graphql": "^14.6.0",
